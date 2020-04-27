@@ -254,12 +254,12 @@
     <script>
 
         $(function () {
-            // 给第一个添加特效
-            $($('.events')[0]).addClass('rotateInDownLeft')
+            // 给第一个添加特效  // rotateInDownLeft
+            $($('.events')[0]).addClass('flipInX')
             let i = 1;
             // 给第2到5个依次添加特效
             let s = setInterval(() => {
-                $($('.events')[i]).addClass('rotateInDownLeft')
+                $($('.events')[i]).addClass('flipInX')
                 if (i == 5) {
                     clearInterval(s);
                 }

@@ -11,7 +11,8 @@ let app = express();
 
 app.use('/public', express.static('./public'))
 
-app.get('/timeline', (req, res) => {
+
+app.get('/', (req, res) => {
     res.sendFile(__dirname + '/views/timeline.html')
 })
 app.get('/411', (req, res) => {
