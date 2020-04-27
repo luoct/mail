@@ -22,7 +22,12 @@
         .kedaya {
             position: relative;
             display: inline-block;
-            left: 65px;
+            left: 18%;
+        }
+        @media screen and (min-width: 992px) {
+            .kedaya {
+                left: 47.75%;
+            }
         }
 
         .read-btn {
@@ -70,7 +75,9 @@
                     <div class="kedaya">
                         <img src="../public/可达鸭.png" width="50">
                     </div>
-                    <dl>
+                    <dl class="animated">
+                        <!-- bounceInDown flipInY -->
+
                         <!-- <dt>2020 5月</dt> -->
 
                          <!-- 四月二十六 ==> 句子 -->
@@ -198,7 +205,7 @@
                                 <div class="events-body">
                                     <div class="row">
                                         <div class="col-md-6 pull-left">
-                                            <img class="events-object img-responsive img-rounded" src="img/1.jpg" />
+                                            <img class="events-object img-responsive img-rounded" src="" />
                                         </div>
                                         <div class="events-desc">
                                             ......
@@ -247,17 +254,16 @@
     <script>
 
         $(function () {
-            $($('.events')[0]).addClass('flipInX')
+            // 给第一个添加特效
+            $($('.events')[0]).addClass('rotateInDownLeft')
             let i = 1;
+            // 给第2到5个依次添加特效
             let s = setInterval(() => {
-
-                $($('.events')[i]).addClass('flipInX')
+                $($('.events')[i]).addClass('rotateInDownLeft')
                 if (i == 5) {
                     clearInterval(s);
-                    console.log(3)
                 }
                 i++;
-                
             }, 150)
         });
 
