@@ -3,7 +3,7 @@ const url = "mongodb://localhost:27017/";
 const dbName = 'mail'
 
 let createCollection = (collectionName) => {
-    MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
+    MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, function (err, db) {
         if (err) throw err;
         console.log('数据库已创建');
         var dbase = db.db(dbName);
@@ -16,7 +16,7 @@ let createCollection = (collectionName) => {
 }
 
 let insertOne = (obj, collectionName, callback) => {
-    MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
+    MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, function (err, db) {
         if (err) throw err;
 
         var dbCollection = db.db(dbName).collection(collectionName)
@@ -32,7 +32,7 @@ let insertOne = (obj, collectionName, callback) => {
 }
 
 let insertMany = (objArr, collectionName, callback) => {
-    MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
+    MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, function (err, db) {
         if (err) throw err;
         var dbCollection = db.db(dbName).collection(collectionName)
 
@@ -48,7 +48,7 @@ let insertMany = (objArr, collectionName, callback) => {
 }
 
 let find = (whereStr, collectionName, callback) => {
-    MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
+    MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, function (err, db) {
         if (err) throw err;
         var dbCollection = db.db(dbName).collection(collectionName)
         whereStr === 'all' ? whereStr = {} : true;
@@ -63,7 +63,7 @@ let find = (whereStr, collectionName, callback) => {
 }
 
 let updateOne = (whereStr, updateStr, collectionName, callback) => {
-    MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
+    MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, function (err, db) {
         if (err) throw err;
         var dbCollection = db.db(dbName).collection(collectionName)
         dbCollection.updateOne(whereStr, { $set: updateStr }, function (err, res) {
@@ -76,7 +76,7 @@ let updateOne = (whereStr, updateStr, collectionName, callback) => {
 }
 
 let updateMany = (whereStr, updateStr, collectionName, callback) => {
-    MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
+    MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, function (err, db) {
         if (err) throw err;
         var dbCollection = db.db(dbName).collection(collectionName)
         dbCollection.updateMany(whereStr, { $set: updateStr }, function (err, res) {
@@ -89,7 +89,7 @@ let updateMany = (whereStr, updateStr, collectionName, callback) => {
 }
 
 let deleteOne = (whereStr, collectionName, callback) => {
-    MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
+    MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, function (err, db) {
         if (err) throw err;
         var dbCollection = db.db(dbName).collection(collectionName)
         dbCollection.deleteOne(whereStr, function (err, res) {
@@ -102,7 +102,7 @@ let deleteOne = (whereStr, collectionName, callback) => {
 }
 
 let deleteMany = (whereStr, collectionName, callback) => {
-    MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
+    MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, function (err, db) {
         if (err) throw err;
         var dbCollection = db.db(dbName).collection(collectionName)
         dbCollection.deleteMany(whereStr, function (err, res) {
@@ -118,7 +118,7 @@ let deleteMany = (whereStr, collectionName, callback) => {
 
 // sortType: { type: 1 }  1升序，-1降序
 let sort = (sortType, collectionName, callback) => {
-    MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
+    MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, function (err, db) {
         if (err) throw err;
         var dbCollection = db.db(dbName).collection(collectionName)
         dbCollection.find().sort(sortType).toArray(function (err, result) {
@@ -133,7 +133,7 @@ let sort = (sortType, collectionName, callback) => {
 
 // 利用limit和skip查询分页
 let findSection = (skipCount, limitCount, collectionName, callback) => {
-    MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
+    MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, function (err, db) {
         if (err) throw err;
         var dbCollection = db.db(dbName).collection(collectionName)
         dbCollection.find().skip(skipCount).limit(limitCount).toArray(function (err, result) {

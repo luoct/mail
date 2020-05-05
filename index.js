@@ -22,18 +22,6 @@ app.use(express.urlencoded({ extended: true })) // for parsing application/x-www
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/views/timeline.html')
 })
-// app.get('/411', (req, res) => {
-//     res.sendFile(__dirname + '/views/411.html')
-// })
-// app.get('/413', (req, res) => {
-//     res.sendFile(__dirname + '/views/413.html')
-// })
-// app.get('/417', (req, res) => {
-//     res.sendFile(__dirname + '/views/417.html')
-// })
-// app.get('/423', (req, res) => {
-//     res.sendFile(__dirname + '/views/423.html')
-// })
 
 
 // 根据访问的路劲自动去判断文件
@@ -53,6 +41,13 @@ app.post('/reply', (req, res) => {
 
     // res返回状态。（并重定向至回信页面）
     res.send({ status: 'ok', data: req.body })
+})
+
+// 统计ip和时间
+app.post('/count',(req, res) => {
+    // console.log(req.body)
+    // body: { ip, city, pathname, openTime, time }
+    db.insertOne(req.body, req.body.pathname)
 })
 
 app.all('*', (req, res) => {
