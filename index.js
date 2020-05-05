@@ -1,11 +1,11 @@
 const express = require('express');
 const db = require('./db')
-var favicon = require('serve-favicon')
+const tools = require('./tools')
+const favicon = require('serve-favicon')
+
+
 
 let app = express();
-
-// app.engine('.html', require('express-art-template'));
-// app.set('view engine', '.html');
 
 // let router = express.Router();
 // app.use('/', router)
@@ -32,7 +32,8 @@ app.get('/mails/:date', (req, res) => {
 
 // reply的 get、post 请求
 app.get('/reply', (req, res) => {
-    res.send(`<textarea>reply</textarea>`)
+    res.send('reply')
+
 })
 app.post('/api/reply', (req, res) => {
     res.set("Access-Control-Allow-Origin", "*")
@@ -54,15 +55,16 @@ app.get('/api/count/:type', (req, res) => {
         console.log(result)
         res.json({ msg: 'ok', result: result })
     })
-
 })
 app.post('/api/count', (req, res) => {
-    // console.log(req.body)
-    // body: { ip, city, pathname, openTime, time }
-    let arr = req.body.pathname.split('/');
-    let collName = arr[arr.length-1]
-    db.insertOne(req.body, collName, ()=>{
-        console.log(collName)
+    // req.body: { city, pathname, openTime, time }
+    let { city, pathname, openTime, time } = req.body;
+    let ipArr = tools.getClientIP(req).split(':');
+    let ip = ipArr[ipArr.length-1]
+    let pnArr = pathname.split('/');
+    let collName = pnArr[pnArr.length-1]
+    db.insertOne({ ip, city, pathname, openTime, time }, collName, ()=>{
+        console.log(res)
     })
 })
 
