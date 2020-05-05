@@ -10,7 +10,7 @@ if (pathname === '/') pathname = 'timeline'
 
 
 $.getJSON('http://www.geoplugin.net/json.gp?jsoncallback=?', function (geo) {
-    console.log('geo:' + JSON.stringify(geo, null, 4));
+    // console.log('geo:' + JSON.stringify(geo, null, 4));
     ip = geo['geoplugin_request'];
     city = geo['geoplugin_city'];
 
@@ -19,7 +19,7 @@ $.getJSON('http://www.geoplugin.net/json.gp?jsoncallback=?', function (geo) {
         var end = new Date();
         time = end.getTime() - start.getTime();
         time = time / 1000;
-        $.post('/count', { ip, city, pathname, openTime, time }, (data) => {
+        $.post('/api/count', { ip, city, pathname, openTime, time }, (data) => {
             console.log('ok')
         })
     };

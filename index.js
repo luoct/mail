@@ -15,7 +15,7 @@ app.use('/public', express.static('./public'))
 // express 4.x中需要自己去添加中间件
 app.use(favicon('favicon.ico'))
 
-// 解析请求
+
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
@@ -29,11 +29,12 @@ app.get('/mails/:date', (req, res) => {
     res.sendFile(__dirname + '/views/' + req.params.date + '.html')
 })
 
+
 // reply的 get、post 请求
 app.get('/reply', (req, res) => {
     res.send(`<textarea>reply</textarea>`)
 })
-app.post('/reply', (req, res) => {
+app.post('/api/reply', (req, res) => {
     res.set("Access-Control-Allow-Origin", "*")
     console.log(req.body)
     // 接收到title和content内容
@@ -43,12 +44,28 @@ app.post('/reply', (req, res) => {
     res.send({ status: 'ok', data: req.body })
 })
 
+
 // 统计ip和时间
-app.post('/count',(req, res) => {
+app.get('/admin/count', (req, res) => {
+    res.sendFile(__dirname + '/views/count.html')
+})
+app.get('/api/count/:type', (req, res) => {
+    db.find({}, req.params.type, (result) => {
+        console.log(result)
+        res.json({ msg: 'ok', result: result })
+    })
+
+})
+app.post('/api/count', (req, res) => {
     // console.log(req.body)
     // body: { ip, city, pathname, openTime, time }
-    db.insertOne(req.body, req.body.pathname)
+    let arr = req.body.pathname.split('/');
+    let collName = arr[arr.length-1]
+    db.insertOne(req.body, collName, ()=>{
+        console.log(collName)
+    })
 })
+
 
 app.all('*', (req, res) => {
     res.sendFile(__dirname + '/views/errrr.html')

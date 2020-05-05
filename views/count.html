@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+    <script src="../public/jquery-1.11.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="table-responsive">
+        <table class="table table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>ip</th>
+                    <th>city</th>
+                    <th>pathname</th>
+                    <th>openTime</th>
+                    <th>time</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+
+    <script src="../public/jquery-1.11.0.min.js"></script>
+    <script>
+        $.get('/api/count/timeline', (res) => {
+            res = res.result
+            console.log(res)
+            for (let i = 0; i < res.length; i++) {
+                $('.table tbody').append(`
+                    <tr>
+                        <td>${res[i].ip}</td>
+                        <td>${res[i].city}</td>
+                        <td>${res[i].pathname}</td>
+                        <td>${res[i].openTime}</td>
+                        <td>${res[i].time}</td>
+                    </tr>
+                `)
+            }
+        })
+    </script>
+</body>
+
+</html>

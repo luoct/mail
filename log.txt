@@ -1,0 +1,57 @@
+Error: Parse Error
+    at socketOnEnd (_http_server.js:539:22)
+    at Socket.emit (events.js:323:22)
+    at endReadableNT (_stream_readable.js:1204:12)
+    at processTicksAndRejections (internal/process/task_queues.js:84:21)
+Error: Parse Error
+    at socketOnEnd (_http_server.js:539:22)
+    at Socket.emit (events.js:323:22)
+    at endReadableNT (_stream_readable.js:1204:12)
+    at processTicksAndRejections (internal/process/task_queues.js:84:21)
+Error: Parse Error
+    at socketOnEnd (_http_server.js:539:22)
+    at Socket.emit (events.js:323:22)
+    at endReadableNT (_stream_readable.js:1204:12)
+    at processTicksAndRejections (internal/process/task_queues.js:84:21)
+Error: Parse Error: Invalid method encountered
+Error: Parse Error
+    at socketOnEnd (_http_server.js:539:22)
+    at Socket.emit (events.js:323:22)
+    at endReadableNT (_stream_readable.js:1204:12)
+    at processTicksAndRejections (internal/process/task_queues.js:84:21)
+Error: Parse Error: Invalid method encountered
+Error: Parse Error: Invalid method encountered
+Error: Parse Error
+    at socketOnEnd (_http_server.js:539:22)
+    at Socket.emit (events.js:323:22)
+    at endReadableNT (_stream_readable.js:1204:12)
+    at processTicksAndRejections (internal/process/task_queues.js:84:21)
+Error: Parse Error: Invalid method encountered
+Error: Parse Error: Invalid method encountered
+Error: Parse Error
+    at socketOnEnd (_http_server.js:539:22)
+    at Socket.emit (events.js:323:22)
+    at endReadableNT (_stream_readable.js:1204:12)
+    at processTicksAndRejections (internal/process/task_queues.js:84:21)
+Error: Parse Error
+    at socketOnEnd (_http_server.js:539:22)
+    at Socket.emit (events.js:323:22)
+    at endReadableNT (_stream_readable.js:1204:12)
+    at processTicksAndRejections (internal/process/task_queues.js:84:21)
+Error: Parse Error
+    at socketOnEnd (_http_server.js:539:22)
+    at Socket.emit (events.js:323:22)
+    at endReadableNT (_stream_readable.js:1204:12)
+    at processTicksAndRejections (internal/process/task_queues.js:84:21)
+Error: Parse Error
+    at socketOnEnd (_http_server.js:539:22)
+    at Socket.emit (events.js:323:22)
+    at endReadableNT (_stream_readable.js:1204:12)
+    at processTicksAndRejections (internal/process/task_queues.js:84:21)
+Error: Parse Error
+    at socketOnEnd (_http_server.js:539:22)
+    at Socket.emit (events.js:323:22)
+    at endReadableNT (_stream_readable.js:1204:12)
+    at processTicksAndRejections (internal/process/task_queues.js:84:21)
+Error: Parse Error: Invalid method encountered
+Error: Parse Error: Invalid method encountered
