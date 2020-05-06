@@ -37,7 +37,6 @@ app.get('/reply', (req, res) => {
 })
 app.post('/api/reply', (req, res) => {
     res.set("Access-Control-Allow-Origin", "*")
-    console.log(req.body)
     // 接收到title和content内容
     // 存入mongodb中
 
@@ -52,7 +51,7 @@ app.get('/admin/count', (req, res) => {
 })
 app.get('/api/count/:type', (req, res) => {
     db.find({}, req.params.type, (result) => {
-        console.log(result)
+        // console.log(result)
         res.json({ msg: 'ok', result: result })
     })
 })
@@ -63,8 +62,8 @@ app.post('/api/count', (req, res) => {
     let ip = ipArr[ipArr.length-1]
     let pnArr = pathname.split('/');
     let collName = pnArr[pnArr.length-1]
-    db.insertOne({ ip, city, pathname, openTime, time }, collName, ()=>{
-        console.log(res)
+    db.insertOne({ ip, city, pathname, openTime, time }, collName, (res)=>{
+        console.log(ip)
     })
 })
 
