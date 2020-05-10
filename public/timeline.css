@@ -231,3 +231,58 @@
         margin-right: 1%;
     }
 }
+
+
+/* 对timeline的一些个性化CSS */
+.container {
+    height: 100vh;
+    padding-left: 0;
+    padding-right: 15px;
+}
+
+.kedaya {
+    position: relative;
+    display: inline-block;
+    left: 18%;
+}
+
+@media screen and (min-width: 992px) {
+    .kedaya {
+        left: 47.75%;
+    }
+}
+
+.read-btn {
+    cursor: pointer;
+    width: 90px;
+    height: 30px;
+    color: #333;
+    border: 1px solid hotpink;
+    border-image: linear-gradient(to left, #12c2e9, #c471ed, #f64f59);
+    border-image-slice: 1;
+    background: transparent;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 30px;
+    padding: 0;
+    border-radius: 0;
+}
+
+.read-btn:hover {
+    color: #fff;
+    background-color: #3ada93;
+    border: 1px solid transparent;
+}
+
+.sentence .time {
+    color: #000 !important;
+}
+
+.sentence .events {
+    padding: 0 !important;
+}
+
+.sentence .circ {
+    background-color: #f64f59 !important;
+}
