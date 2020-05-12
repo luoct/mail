@@ -4,7 +4,7 @@ let mail = {
                 <div class="circ"></div>
                 <div class="time">{{ date }}</div>
                 <div class="events animated">
-                    <div class="events-header"><a href="/mails/{{ herf }}">{{ title }}</a></div>
+                    <div class="events-header"><a :href="mailUrl">{{ title }}</a></div>
                     <div class="events-body">
                         <div class="row">
                             <div class="col-md-6 pull-left">
@@ -18,13 +18,14 @@ let mail = {
 
                     </div>
                     <div class="events-footer  pull-right">
-                        <a href="/mails/{{herf}}" class="btn read-btn">more</a>
+                        <a :href="mailUrl" class="btn read-btn">more</a>
                     </div>
                 </div>
             </dd>`,
     data: function () {
         return {
-            msg: 'ok'
+            msg: 'ok',
+            mailUrl: '/mails/'+ this.herf
         }
     }
 }
