@@ -187,8 +187,8 @@
     }
     .VivaTimeline dl dd.pos-left .time {
         padding: 10px 0;
-        margin-left: 0;
-        text-align: left
+        margin-left: -44px;
+        text-align: right;
     }
     .VivaTimeline dl dd.pos-left .events {
         float: right;
@@ -201,8 +201,8 @@
     }
     .VivaTimeline dl dd.pos-right .time {
         padding: 10px 0;
-        margin-left: 0;
-        text-align: left
+        margin-left: -44px;
+        text-align: right
     }
     .VivaTimeline dl dd.pos-right .events {
         float: right;
