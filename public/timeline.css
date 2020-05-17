@@ -100,7 +100,7 @@
 .VivaTimeline dl dd .events .events-body {
     overflow: hidden;
     zoom: 1;
-    padding: 10px;    
+    padding: 10px;
 }
 .VivaTimeline dl dd .events .events-body .row{
     display:none;  
