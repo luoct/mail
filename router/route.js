@@ -4,13 +4,14 @@ const tools = require('../tools')
 
 let router = (app) => {
     app.get('/', (req, res) => {
-        res.sendFile(path.resolve(__dirname , '../views/timeline_vue.html'))
+        // res.sendFile(path.resolve(__dirname, '../views/timeline_vue.html'))
+        res.sendFile(path.resolve(__dirname, '../views/timeline_req.html'))
     })
 
 
     // 根据访问的路劲自动去判断文件
     app.get('/mails/:date', (req, res) => {
-        res.sendFile(path.resolve(__dirname , '../views/' + req.params.date +  '.html'))
+        res.sendFile(path.resolve(__dirname, '../views/' + req.params.date + '.html'))
     })
 
 
@@ -28,10 +29,30 @@ let router = (app) => {
         res.send({ status: 'ok', data: req.body })
     })
 
+    // 拿到words数据，给timeline页面
+    app.get('/api/words', (req, res) => {
+        db.find('all', 'words', (result) => {
+            // console.log(result)
+            res.send(result.reverse())
+        })
+    })
+    // 上传words数据
+    app.post('/api/words', (req, res) => {
+        res.set("Access-Control-Allow-Origin", "*")
+        db.insertOne(req.body, 'words', (res) => {
+            console.log(res.insertedCount);
+        })
+        res.send('ok')
+    })
+    app.get('/post-words', (req, res) => {
+        res.sendFile(path.resolve(__dirname, '../views/post-words.html'))
+    })
+
+
 
     // 统计ip和时间
     app.get('/admin/count', (req, res) => {
-        res.sendFile(path.resolve(__dirname , '../views/count.html'))
+        res.sendFile(path.resolve(__dirname, '../views/count.html'))
     })
     app.get('/api/count/:type', (req, res) => {
         db.find({}, req.params.type, (result) => {

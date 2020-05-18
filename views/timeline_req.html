@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>你是青天一样可羡</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="../public/timeline.css">
+    <link rel="stylesheet" href="../public/animate.css">
+    <script src="../public/jquery-1.11.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+    <script src="../public/timeline.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="VivaTimeline" id='app'>
+                    <div class="kedaya">
+                        <img src="../public/可达鸭.png" width="50">
+                    </div>
+                    <dl class="animated">
+                        <!-- bounceInDown flipInY -->
+
+                        <template v-for="(item,index) in words">
+                            <template v-if="item.type=='mail'">
+                                <mail :date="item.date" :herf='item.herf' :title="item.content"></mail>
+                            </template>
+                            <template v-else-if="item.type=='sentence'">
+                                <sentence :date="item.date" :content="item.content"></sentence>
+                            </template>
+                            <template v-else>
+                                <dt>2020 {{ item.content }}</dt>
+                            </template>
+                        </template>
+
+
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="../public/vue.min.js"></script>
+    <script src="../public/timeline-cmp.js"></script>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            components: {
+                mail,
+                sentence
+            },
+            data: {
+                words: []
+            },
+            created() {
+                $.ajax({
+                    method: 'get',
+                    url: '/api/words',
+                    success(res) {
+                        vm.$data.words = res
+                    }
+                })
+            }
+        });
+
+
+    </script>
+    <script>
+        $(function () {
+            // 给第一个添加特效  // rotateInDownLeft
+            $($('.events')[0]).addClass('flipInX')
+            let i = 1;
+            // 给第2到5个依次添加特效
+            let s = setInterval(() => {
+                $($('.events')[i]).addClass('flipInX')
+                if (i == 5) {
+                    clearInterval(s);
+                }
+                i++;
+            }, 150)
+        });
+    </script>
+
+    <!-- <script src="../public/count.js"></script> -->
+</body>
+
+</html>

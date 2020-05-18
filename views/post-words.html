@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" name="type">
+    <input type="text" name="content">
+    <input type="text" name="date">
+    <input type="text" name="herf">
+
+    <button>a</button>
+
+
+    <script src="../public/jquery-1.11.0.min.js"></script>
+    <script>
+
+
+        $('button').click(() => {
+            let words;
+            let type = $('[name="type"')[0].value;
+            let content = $('[name="content"')[0].value;
+            let date = $('[name="date"')[0].value;
+            let herf = $('[name="herf"')[0].value;
+
+            type === 'mail' ? words = { type, content, date, herf } : words = { type, content, date }
+            $.ajax({
+                method: 'post',
+                url: '/api/words',
+                data: words,
+                success: (res) => {
+                    console.log(res)
+                }
+            })
+        })
+
+    </script>
+</body>
+
+</html>
